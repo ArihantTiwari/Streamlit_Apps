@@ -129,6 +129,8 @@ if selected_scheme == 'I have the desired Wavelength window':
 
     z_max = (SDSS_MAX/wl_max)-1
     z_min = (SDSS_MIN/wl_min) - 1
+    if z_min<0:
+        z_min=0
     with st.container():
         fig1,axt = plt.subplots(figsize=(8,3))
         axt.plot(VB_Wavelength,VB_Flux,lw=1)
