@@ -85,8 +85,8 @@ if selected_scheme == 'I have the desired redshift window':
 
     with st.container():
         fig1,axt = plt.subplots(figsize=(8,3))
-        axt.plot(VB_Wavelength,VB_Flux,lw=1)
-        axt.axvspan(wl_min,wl_max,color='red',alpha=0.2)
+        axt.plot(VB_Wavelength,VB_Flux,lw=1,c='black')
+        axt.axvspan(wl_min,wl_max,color='orange',alpha=0.2)
         for label, wavelength in lines.items():
             axt.axvline(wavelength, color='blue', linestyle='--', alpha=0.7,lw=1)
             axt.text(wavelength, max(VB_Flux) * 0.8, label, rotation=90, fontsize=8, color='blue', ha='right', va='bottom')
@@ -133,7 +133,7 @@ if selected_scheme == 'I have the desired Wavelength window':
         z_min=0
     with st.container():
         fig1,axt = plt.subplots(figsize=(8,3))
-        axt.plot(VB_Wavelength,VB_Flux,lw=1)
+        axt.plot(VB_Wavelength,VB_Flux,lw=1,c='black')
         axt.axvspan(wl_min,wl_max,color='red',alpha=0.2)
         for label, wavelength in lines.items():
             axt.axvline(wavelength, color='blue', linestyle='--', alpha=0.7,lw=1)
@@ -144,7 +144,7 @@ if selected_scheme == 'I have the desired Wavelength window':
         fig2,axt = plt.subplots(figsize=(8,3))
         axt.set_title(f'$Z_i$: {round(z_min,5)}\t\t\t\t\t\t$Z_f$: {round(z_max,5)}')
         axt.plot(VB_Wavelength[int((wl_min-800)):int((wl_max-800))],VB_Flux[int((wl_min-800)):int((wl_max-800))],lw=1)
-        axt.axvspan(wl_min,wl_max,color='red',alpha=0.2)
+        axt.axvspan(wl_min,wl_max,color='orange',alpha=0.2)
         for label, wavelength in lines.items():
             if wavelength > wl_min and wavelength < wl_max:
                 axt.axvline(wavelength, color='blue', linestyle='--', alpha=0.7,lw=1)
