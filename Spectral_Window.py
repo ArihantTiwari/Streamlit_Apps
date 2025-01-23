@@ -140,7 +140,7 @@ if selected_scheme == 'I have the desired Wavelength window':
         st.pyplot(fig1)
 
         fig2,axt = plt.subplots(figsize=(8,3))
-        axt.set_title(f'$\lambda_i$: {round(z_min,5)}\t\t\t\t\t\t$\lambda_f$: {round(z_max,5)}')
+        axt.set_title(f'$Z$: {round(z_min,5)}\t\t\t\t\t\t$Z$: {round(z_max,5)}')
         axt.plot(VB_Wavelength[int((wl_min-800)):int((wl_max-800))],VB_Flux[int((wl_min-800)):int((wl_max-800))],lw=1)
         axt.axvspan(wl_min,wl_max,color='red',alpha=0.2)
         for label, wavelength in lines.items():
