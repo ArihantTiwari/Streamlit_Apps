@@ -115,7 +115,7 @@ if selected_scheme == 'I have the desired Wavelength window':
                 max_value=10400.00,
                 value=3600.00,
                 step=0.01,  # Match the precision of the default value
-                format="%.5f"  # Display five decimal places
+                format="%.2f"  # Display five decimal places
             )
         with col2:
             wl_max = st.number_input(
@@ -124,7 +124,7 @@ if selected_scheme == 'I have the desired Wavelength window':
                 max_value=10400.00,
                 value=10400.00,
                 step=0.01,  # Match the precision of the default value
-                format="%.5f"  # Display five decimal places
+                format="%.2f"  # Display five decimal places
             )
 
     z_max = (SDSS_MAX/wl_max)-1
