@@ -83,6 +83,27 @@ if selected_scheme == 'I have the desired redshift window':
     a2 = SDSS_MAX/(1+z_max)
     wl_max = min(a1,a2)
 
+    with st.container():
+        fig1,axt = plt.subplots(figsize=(8,3))
+        axt.plot(VB_Wavelength,VB_Flux,lw=1)
+        axt.axvspan(wl_min,wl_max,color='red',alpha=0.2)
+        for label, wavelength in lines.items():
+            axt.axvline(wavelength, color='blue', linestyle='--', alpha=0.7,lw=1)
+            axt.text(wavelength, max(VB_Flux) * 0.8, label, rotation=90, fontsize=8, color='blue', ha='right', va='bottom')
+
+        st.pyplot(fig1)
+
+        fig2,axt = plt.subplots(figsize=(8,3))
+        axt.set_title(f'$\lambda_i$: {round(wl_min,2)}\t\t\t\t\t\t$\lambda_f$: {round(wl_max,2)}')
+        axt.plot(VB_Wavelength[int((wl_min-800)):int((wl_max-800))],VB_Flux[int((wl_min-800)):int((wl_max-800))],lw=1)
+        axt.axvspan(wl_min,wl_max,color='red',alpha=0.2)
+        for label, wavelength in lines.items():
+            if wavelength > wl_min and wavelength < wl_max:
+                axt.axvline(wavelength, color='blue', linestyle='--', alpha=0.7,lw=1)
+                axt.text(wavelength, max(VB_Flux[int((wl_min-800)):int((wl_max-800))]) * 0.8, label, rotation=90, fontsize=8, color='blue', ha='right', va='bottom')
+
+        st.pyplot(fig2)
+
 if selected_scheme == 'I have the desired Wavelength window':
 
     with st.container():
@@ -106,26 +127,26 @@ if selected_scheme == 'I have the desired Wavelength window':
                 format="%.5f"  # Display five decimal places
             )
 
-z_max = (SDSS_MAX/wl_max)-1
-z_min = (SDSS_MIN/wl_min) - 1
-with st.container():
-    fig1,axt = plt.subplots(figsize=(8,3))
-    axt.plot(VB_Wavelength,VB_Flux,lw=1)
-    axt.axvspan(wl_min,wl_max,color='red',alpha=0.2)
-    for label, wavelength in lines.items():
-        axt.axvline(wavelength, color='blue', linestyle='--', alpha=0.7,lw=1)
-        axt.text(wavelength, max(VB_Flux) * 0.8, label, rotation=90, fontsize=8, color='blue', ha='right', va='bottom')
-
-    st.pyplot(fig1)
-
-    fig2,axt = plt.subplots(figsize=(8,3))
-    axt.set_title(f'$\lambda_i$: {round(z_min,5)}\t\t\t\t\t\t$\lambda_f$: {round(z_max,5)}')
-    axt.plot(VB_Wavelength[int((wl_min-800)):int((wl_max-800))],VB_Flux[int((wl_min-800)):int((wl_max-800))],lw=1)
-    axt.axvspan(wl_min,wl_max,color='red',alpha=0.2)
-    for label, wavelength in lines.items():
-        if wavelength > wl_min and wavelength < wl_max:
+    z_max = (SDSS_MAX/wl_max)-1
+    z_min = (SDSS_MIN/wl_min) - 1
+    with st.container():
+        fig1,axt = plt.subplots(figsize=(8,3))
+        axt.plot(VB_Wavelength,VB_Flux,lw=1)
+        axt.axvspan(wl_min,wl_max,color='red',alpha=0.2)
+        for label, wavelength in lines.items():
             axt.axvline(wavelength, color='blue', linestyle='--', alpha=0.7,lw=1)
-            axt.text(wavelength, max(VB_Flux[int((wl_min-800)):int((wl_max-800))]) * 0.8, label, rotation=90, fontsize=8, color='blue', ha='right', va='bottom')
+            axt.text(wavelength, max(VB_Flux) * 0.8, label, rotation=90, fontsize=8, color='blue', ha='right', va='bottom')
 
-    st.pyplot(fig2)
+        st.pyplot(fig1)
+
+        fig2,axt = plt.subplots(figsize=(8,3))
+        axt.set_title(f'$\lambda_i$: {round(z_min,5)}\t\t\t\t\t\t$\lambda_f$: {round(z_max,5)}')
+        axt.plot(VB_Wavelength[int((wl_min-800)):int((wl_max-800))],VB_Flux[int((wl_min-800)):int((wl_max-800))],lw=1)
+        axt.axvspan(wl_min,wl_max,color='red',alpha=0.2)
+        for label, wavelength in lines.items():
+            if wavelength > wl_min and wavelength < wl_max:
+                axt.axvline(wavelength, color='blue', linestyle='--', alpha=0.7,lw=1)
+                axt.text(wavelength, max(VB_Flux[int((wl_min-800)):int((wl_max-800))]) * 0.8, label, rotation=90, fontsize=8, color='blue', ha='right', va='bottom')
+
+        st.pyplot(fig2)
     
