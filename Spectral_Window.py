@@ -52,6 +52,10 @@ lines = {
 }
 
 selected_scheme = st.sidebar.selectbox('Select the scheme',('I have the desired redshift window','I have the desired Wavelength window'))
+telescope = st.sidebar.selectbox('Select the Telescope: ',('SDSS','DESI'))
+
+if telescope == 'DESI':
+    SDSS_MAX = 9800
 #####################################################################################
 if selected_scheme == 'I have the desired redshift window':
     with st.container():
